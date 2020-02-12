@@ -30,7 +30,7 @@ class CollectionObjectService: CollectionObjectServiceProtocol {
                 completion(.failure(error))
             case .success(let data):
                 if let object = CollectionObject.deserialize(with: data) {
-                    completion(.success(object))
+                    completion(.success(ObjectViewModel(object: object)))
                 }
             }
             
@@ -38,10 +38,7 @@ class CollectionObjectService: CollectionObjectServiceProtocol {
     }
     
     
-    func loadObjectImageWith(stringUrl: String, completion: @escaping loadImageResult) throws {
-         let url = URL(string: stringUrl)!
-        networkClient.requestFor(urlRequest: <#T##URLRequest#>, completion: <#T##response##response##(Result<Data, Error>) -> ()#>)
-    }
+    func loadObjectImageWith(stringUrl: String, completion: @escaping loadImageResult) throws {}
     
     
 }

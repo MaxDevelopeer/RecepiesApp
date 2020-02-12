@@ -11,8 +11,15 @@ import UIKit
 class ObjectScreenViewController: UIViewController {
 
     private let collectionService: CollectionObjectServiceProtocol
+    private var collectionObjectViewModel: ObjectViewModel? {
+        didSet {
+          DispatchQueue.main.async { self.configureOutlets() }
+        }
+    }
     
-    @IBOutlet private var objectTitle: UILabel?
+    @IBOutlet private var authorLabel: UILabel?
+    @IBOutlet var descriptionLabel: UILabel?
+    
     @IBOutlet private var objectImage: UIImageView? {
         didSet {
             objectImage?.layer.cornerRadius = 5.0
@@ -30,19 +37,23 @@ class ObjectScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-              
+        
+        configureNavigationBar()
+        
               do {
                   try collectionService.loadObjectWith(id: "SK-C-5", completion: { (result) in
                       switch result {
                       case .failure(let error):
-                          print(error.localizedDescription)
-                      case .success(let object):
-                        DispatchQueue.main.async { self.objectTitle?.text = object.artObject.title }
-                           let imgUrl = URL(string: object.artObject.image.url)!
-                           URLSession.shared.dataTask(with: imgUrl) { (data, response, error) in
-                            DispatchQueue.main.async { self.objectImage?.image = UIImage(data: data!) }
-                           }.resume()
-                           
+                        print(error.localizedDescription)
+                      case .success(let objectViewModel):
+                        self.collectionObjectViewModel = objectViewModel
+                        
+                        let imgUrl = URL(string: objectViewModel.getObjectImageStringUrl)!
+                        URLSession.shared.dataTask(with: imgUrl) { (data, response, error) in
+                         DispatchQueue.main.async { self.objectImage?.image = UIImage(data: data!) }
+                        }.resume()
+                        
+                        
                       }
                   })
               } catch (let error) {
@@ -50,4 +61,26 @@ class ObjectScreenViewController: UIViewController {
               }
     }
 
+}
+
+
+private extension ObjectScreenViewController {
+    
+    func configureNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    
+    func configureOutlets() {
+        guard let objectViewModel = collectionObjectViewModel else { return }
+        navigationItem.title = objectViewModel.getObjectTitle
+        authorLabel?.text = objectViewModel.getObjectCreator
+        descriptionLabel?.text = objectViewModel.getObjectDescription
+    }
+    
+    
+    
 }

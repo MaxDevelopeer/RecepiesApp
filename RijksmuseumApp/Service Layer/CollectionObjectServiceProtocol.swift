@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-typealias loadObjectsResult = (Result<CollectionObject, Error>) -> ()
+typealias loadObjectsResult = (Result<ObjectViewModel, Error>) -> ()
 typealias loadImageResult = (Result<UIImage, Error>) -> ()
 
 protocol CollectionObjectServiceProtocol: class {

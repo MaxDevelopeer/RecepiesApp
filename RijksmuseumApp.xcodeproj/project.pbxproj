@@ -19,6 +19,7 @@
 		9450A27F23F1EB8200B89DC3 /* CollectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A27E23F1EB8100B89DC3 /* CollectionObject.swift */; };
 		9450A28223F3410400B89DC3 /* CollectionObjectServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A28123F3410400B89DC3 /* CollectionObjectServiceProtocol.swift */; };
 		9450A28423F3424400B89DC3 /* CollectionObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A28323F3424400B89DC3 /* CollectionObjectService.swift */; };
+		9450A28623F498C600B89DC3 /* ObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A28523F498C600B89DC3 /* ObjectViewModel.swift */; };
 		EEFB8CEF23F3F2B800ED13B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8CEE23F3F2B800ED13B6 /* Extensions.swift */; };
 		EEFB8CF923F3F2E100ED13B6 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8CF423F3F2E100ED13B6 /* APIRouter.swift */; };
 		EEFB8CFA23F3F2E100ED13B6 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8CF523F3F2E100ED13B6 /* APIConfig.swift */; };
@@ -53,6 +54,7 @@
 		9450A27E23F1EB8100B89DC3 /* CollectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionObject.swift; sourceTree = "<group>"; };
 		9450A28123F3410400B89DC3 /* CollectionObjectServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionObjectServiceProtocol.swift; sourceTree = "<group>"; };
 		9450A28323F3424400B89DC3 /* CollectionObjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionObjectService.swift; sourceTree = "<group>"; };
+		9450A28523F498C600B89DC3 /* ObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewModel.swift; sourceTree = "<group>"; };
 		EEFB8CEE23F3F2B800ED13B6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EEFB8CF423F3F2E100ED13B6 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		EEFB8CF523F3F2E100ED13B6 /* APIConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				EEFB8D1323F43D2100ED13B6 /* ObjectScreenViewController.xib */,
 				EEFB8D1523F43D3000ED13B6 /* ObjectScreenViewController.swift */,
+				9450A28523F498C600B89DC3 /* ObjectViewModel.swift */,
 			);
 			path = "Object Screen";
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				EEFB8CEF23F3F2B800ED13B6 /* Extensions.swift in Sources */,
 				9450A24D23F0803500B89DC3 /* Deserializable.swift in Sources */,
 				9450A28423F3424400B89DC3 /* CollectionObjectService.swift in Sources */,
+				9450A28623F498C600B89DC3 /* ObjectViewModel.swift in Sources */,
 				9450A27D23F08C0C00B89DC3 /* ArtObjectImage.swift in Sources */,
 				EEFB8D0923F3F31000ED13B6 /* MultipartBody.swift in Sources */,
 				9450A28223F3410400B89DC3 /* CollectionObjectServiceProtocol.swift in Sources */,
