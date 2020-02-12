@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ObjectScreenViewController" customModule="RijksmuseumApp" customModuleProvider="target">
+            <connections>
+                <outlet property="objectImage" destination="WzU-AA-TaP" id="AHo-YS-7oN"/>
+                <outlet property="objectTitle" destination="GrR-PN-z5f" id="nxK-9t-Yyk"/>
+                <outlet property="view" destination="0rB-J4-KdV" id="fW0-54-4io"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0rB-J4-KdV">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WzU-AA-TaP">
+                    <rect key="frame" x="20" y="74" width="170" height="170"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="170" id="Wee-cd-kJR"/>
+                        <constraint firstAttribute="width" constant="170" id="zQQ-R8-Hza"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrR-PN-z5f">
+                    <rect key="frame" x="200" y="74" width="38.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="GrR-PN-z5f" firstAttribute="top" secondItem="wZc-Zm-fgf" secondAttribute="top" constant="30" id="KzE-kr-dw1"/>
+                <constraint firstItem="WzU-AA-TaP" firstAttribute="leading" secondItem="wZc-Zm-fgf" secondAttribute="leading" constant="20" id="dlO-rf-cJm"/>
+                <constraint firstItem="GrR-PN-z5f" firstAttribute="leading" secondItem="WzU-AA-TaP" secondAttribute="trailing" constant="10" id="qL7-Y4-jKH"/>
+                <constraint firstItem="WzU-AA-TaP" firstAttribute="top" secondItem="wZc-Zm-fgf" secondAttribute="top" constant="30" id="qiM-oQ-v8p"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="wZc-Zm-fgf"/>
+            <point key="canvasLocation" x="408.69565217391306" y="160.71428571428569"/>
+        </view>
+    </objects>
+</document>

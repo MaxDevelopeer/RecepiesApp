@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 extension NSMutableData {
@@ -36,6 +37,14 @@ public extension Data {
         
         print("jsonObject: ", jsonObject)
         print("jsonString:", jsonString)
+    }
+    
+}
+
+extension UIViewController {
+    
+    static var nibName: String {
+        return String(describing: Self.self)
     }
     
 }

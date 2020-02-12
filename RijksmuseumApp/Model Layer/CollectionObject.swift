@@ -15,7 +15,6 @@ final class CollectionObject: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case artObject
-        
     }
     
     
@@ -23,7 +22,7 @@ final class CollectionObject: Decodable {
 
         let container = try decoder.container(keyedBy: CodingKeys.self)
         artObject = try container.decode(ArtObject.self, forKey: .artObject)
-       
+        
     }
     
     

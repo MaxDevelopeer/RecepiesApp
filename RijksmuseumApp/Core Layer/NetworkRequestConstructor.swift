@@ -9,8 +9,8 @@
 import Foundation
 
 
-protocol RequestConstructor {
+protocol NetworkRequestConstructor {
     
-    func asUrlRequest() -> Result <URLRequest, Error>
+    func asUrlRequest() throws -> URLRequest
     
 }

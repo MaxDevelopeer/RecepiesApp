@@ -10,6 +10,8 @@ import Foundation
 
 
 class CollectionObjectService: CollectionObjectServiceProtocol {
+   
+    
     
     private let networkClient: NetworkClient = {
         var configuration = URLSessionConfiguration.default
@@ -18,7 +20,7 @@ class CollectionObjectService: CollectionObjectServiceProtocol {
     
     
     func loadObjectWith(id: String, completion: @escaping loadObjectsResult) throws {
-        let request = try APIRouter.collectionObject(id: id).asURLRequest().get()
+        let request = try APIRouter.collectionObject(id: id).asUrlRequest()
         
         networkClient.requestFor(urlRequest: request) { (result) in
             
@@ -33,9 +35,12 @@ class CollectionObjectService: CollectionObjectServiceProtocol {
             }
             
         }
-        
-        
-        
+    }
+    
+    
+    func loadObjectImageWith(stringUrl: String, completion: @escaping loadImageResult) throws {
+         let url = URL(string: stringUrl)!
+        networkClient.requestFor(urlRequest: <#T##URLRequest#>, completion: <#T##response##response##(Result<Data, Error>) -> ()#>)
     }
     
     

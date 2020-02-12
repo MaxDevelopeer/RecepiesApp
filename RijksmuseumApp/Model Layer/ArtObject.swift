@@ -17,7 +17,7 @@ final class ArtObject: Decodable {
     var objectDescription: String
     var titles: [String]
     var longDescription: String
-    var creator: [Creator]
+    var creators: [Creator]
     
     private enum CodingKeys: String, CodingKey {
         case objectNumber
@@ -25,7 +25,7 @@ final class ArtObject: Decodable {
         case image = "webImage"
         case objectDescription = "description"
         case titles
-        case creator = "principalMakers"
+        case creators = "principalMakers"
         case longDescription = "plaqueDescriptionEnglish"
     }
     
@@ -39,20 +39,10 @@ final class ArtObject: Decodable {
         titles = try container.decode([String].self, forKey: .titles)
         longDescription = try container.decode(String.self, forKey: .longDescription)
         objectNumber = try container.decode(String.self, forKey: .objectNumber)
-        creator = try container.decode([Creator].self, forKey: .creator)
+        creators = try container.decode([Creator].self, forKey: .creators)
         image = try container.decode(ArtObjectImage.self, forKey: .image)
         
         
     }
     
 }
-
-//
-//extension ArtObject: Deserializable {
-//
-//    convenience init(with data: Data) throws {
-//        let decoder = JSONDecoder()
-//        try decoder.decode(ArtObject.self, from: data)
-//    }
-//
-//}

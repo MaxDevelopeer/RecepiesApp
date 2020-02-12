@@ -9,27 +9,29 @@
 import Foundation
 
 
-public typealias Parameters = [String : Any]
+typealias Parameters = [String : Any]
 
 
-public class NetworkClient {
+
+
+class NetworkClient {
     
     private let session: URLSession
     
     
-    public init(sessionConfiguration: URLSessionConfiguration) {
+    init(sessionConfiguration: URLSessionConfiguration) {
         self.session = URLSession(configuration: sessionConfiguration)
     }
     
-   public init(session: URLSession) {
+    init(session: URLSession) {
         self.session = session
     }
     
     
-public func requestFor(urlRequest: URLRequest, completion: @escaping response) {
-
+    func requestFor(urlRequest: URLRequest, completion: @escaping response) {
         
-       let taskCompletionHandler = { (data: Data?, response: URLResponse?, error: Error?) in
+        
+        let taskCompletionHandler = { (data: Data?, response: URLResponse?, error: Error?) in
             
             if let error = error {
                 completion(.failure(NetworkError.failedToSendRequest(error: error)))
@@ -65,7 +67,7 @@ public func requestFor(urlRequest: URLRequest, completion: @escaping response) {
 }
 
 
-public extension NetworkClient {
+extension NetworkClient {
     
     enum NetworkError: Error {
         case missingResponse

@@ -12,7 +12,7 @@ import Foundation
 struct ApiConfig {
    
     #if DEBUG
-    static let baseUrl = "https://jsonplaceholder.typicode.com"
+    static let baseUrl = "https://www.rijksmuseum.nl"
     static let authHeader = "Basic EXAMPLE1=="
     #endif
     

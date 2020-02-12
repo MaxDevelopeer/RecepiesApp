@@ -15,8 +15,8 @@ extension APIRouter {
         switch self {
         case .posts:
             return "/posts"
-        case .specificPost(let postId):
-            return "/posts/\(postId)"
+        case .collectionObject(let id):
+            return "/api/en/collection/\(id)"
         case .basicMultipartData:
             return "/exampleMultipart"
         }

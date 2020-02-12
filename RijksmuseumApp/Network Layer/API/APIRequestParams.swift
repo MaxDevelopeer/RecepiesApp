@@ -13,8 +13,8 @@ extension APIRouter {
     
     var params: Parameters {
         switch self {
-        case .specificPost(let postId):
-            return ["param1": postId]
+        case .collectionObject:
+            return ["key": "ZFetNBQ2"]
         default:
             return [:]
         }

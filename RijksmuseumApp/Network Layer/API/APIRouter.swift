@@ -14,7 +14,7 @@ public enum APIRouter {
     case posts
     
     case collectionObject(
-        postId: Int
+        id: String
     )
     
     case basicMultipartData(
@@ -22,7 +22,7 @@ public enum APIRouter {
     )
     
     
-   private var method: HTTPMethod {
+    private var method: HTTPMethod {
         switch self {
         case .basicMultipartData:
             return .post
@@ -31,7 +31,7 @@ public enum APIRouter {
         }
     }
     
-   private var encodeType: EncodeType {
+    private var encodeType: EncodeType {
         switch self {
         case .basicMultipartData:
             return .MultipartDataEncode(parts: bodyParts, boundary: MultipartBoundary())
@@ -39,8 +39,8 @@ public enum APIRouter {
             return .URLEncode(params: params)
         }
     }
-
-   private var timeoutInterval: TimeInterval {
+    
+    private var timeoutInterval: TimeInterval {
         switch self {
         case .basicMultipartData:
             return 120
@@ -67,8 +67,8 @@ extension APIRouter: NetworkRequestConstructor {
         urlRequest.httpMethod = method.rawValue
         
         return try encodeType.encode(request: urlRequest)
-
+        
     }
-
+    
     
 }
