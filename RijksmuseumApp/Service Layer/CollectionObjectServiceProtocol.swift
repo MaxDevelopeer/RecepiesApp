@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-typealias loadObjectsResult = (Result<ObjectViewModel, Error>) -> ()
+typealias loadObjectsResult = (Result<CollectionObject, Error>) -> ()
 typealias loadImageResult = (Result<UIImage, Error>) -> ()
 
 protocol CollectionObjectServiceProtocol: class {
     
-    func loadObjectWith(id: String, completion: @escaping loadObjectsResult) throws
+    func loadObjectWith(id: String, completion: @escaping loadObjectsResult)
     
-    func loadObjectImageWith(stringUrl: String, completion: @escaping loadImageResult) throws
+    func loadObjectImageWith(stringUrl: String, completion: @escaping loadImageResult)
     
 }
 

@@ -9,16 +9,11 @@
 import UIKit
 
 class ObjectScreenViewController: UIViewController {
-
-    private let collectionService: CollectionObjectServiceProtocol
-    private var collectionObjectViewModel: ObjectViewModel? {
-        didSet {
-          DispatchQueue.main.async { self.configureOutlets() }
-        }
-    }
+    
+    // MARK: Private Properties
     
     @IBOutlet private var authorLabel: UILabel?
-    @IBOutlet var descriptionLabel: UILabel?
+    @IBOutlet private var descriptionLabel: UILabel?
     
     @IBOutlet private var objectImage: UIImageView? {
         didSet {
@@ -26,8 +21,16 @@ class ObjectScreenViewController: UIViewController {
         }
     }
     
-    init(collectionService: CollectionObjectServiceProtocol) {
-        self.collectionService = collectionService
+    
+    // MARK: Private Constants
+
+    private let collectionObjectViewModel: ObjectViewModel
+    
+    
+    // MARK: Init
+    
+    init(collectionObjectViewModel: ObjectViewModel) {
+        self.collectionObjectViewModel = collectionObjectViewModel
         super.init(nibName: ObjectScreenViewController.nibName, bundle: nil)
     }
     
@@ -35,34 +38,29 @@ class ObjectScreenViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavigationBar()
+        collectionObjectViewModel.loadObjectWith()
         
-              do {
-                  try collectionService.loadObjectWith(id: "SK-C-5", completion: { (result) in
-                      switch result {
-                      case .failure(let error):
-                        print(error.localizedDescription)
-                      case .success(let objectViewModel):
-                        self.collectionObjectViewModel = objectViewModel
-                        
-                        let imgUrl = URL(string: objectViewModel.getObjectImageStringUrl)!
-                        URLSession.shared.dataTask(with: imgUrl) { (data, response, error) in
-                         DispatchQueue.main.async { self.objectImage?.image = UIImage(data: data!) }
-                        }.resume()
-                        
-                        
-                      }
-                  })
-              } catch (let error) {
-                  print(error.localizedDescription)
-              }
+        collectionObjectViewModel.loadedCompletion = {
+            DispatchQueue.main.async {
+                self.navigationItem.title = self.collectionObjectViewModel.getObjectTitle
+                self.authorLabel?.text = self.collectionObjectViewModel.getObjectCreator
+                self.descriptionLabel?.text = self.collectionObjectViewModel.getObjectDescription
+                self.objectImage?.image = self.collectionObjectViewModel.objectImage
+            }
+        }
     }
-
+    
 }
 
+
+// MARK: Private Methods
 
 private extension ObjectScreenViewController {
     
@@ -72,15 +70,5 @@ private extension ObjectScreenViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
     }
-    
-    
-    func configureOutlets() {
-        guard let objectViewModel = collectionObjectViewModel else { return }
-        navigationItem.title = objectViewModel.getObjectTitle
-        authorLabel?.text = objectViewModel.getObjectCreator
-        descriptionLabel?.text = objectViewModel.getObjectDescription
-    }
-    
-    
     
 }

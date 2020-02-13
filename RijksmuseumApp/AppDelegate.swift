@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let service = CollectionObjectService()
-        let vc = ObjectScreenViewController(collectionService: service)
+        let collectionViewModel = ObjectViewModel(collectionObjectService: service, objectId: "SK-C-5")
+        let vc = ObjectScreenViewController(collectionObjectViewModel: collectionViewModel)
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
         

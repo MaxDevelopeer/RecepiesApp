@@ -11,6 +11,6 @@ import Foundation
 
 protocol NetworkRequestConstructor {
     
-    func asUrlRequest() throws -> URLRequest
+    func asUrlRequest() -> Result <URLRequest, Error>
     
 }

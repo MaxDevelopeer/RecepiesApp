@@ -29,7 +29,7 @@ enum EncodeType {
     }
     
     
-    func encode(request: URLRequest) throws ->  URLRequest {
+    func encode(request: URLRequest) -> Result <URLRequest,Error> {
         
         var urlRequest = request
         
@@ -37,12 +37,12 @@ enum EncodeType {
         case .JSONEncode(let params):
             
             guard let params = params else {
-                return urlRequest
+                return .success(urlRequest)
             }
             
             guard let data = try? JSONSerialization.data(withJSONObject: params,
                                                          options: .fragmentsAllowed) else {
-                throw EncodingErrors.failedJSONEncodeParameters
+                return .failure(EncodingErrors.failedJSONEncodeParameters)
             }
             
             urlRequest.httpBody = data
@@ -50,21 +50,21 @@ enum EncodeType {
         case .URLEncode(let params):
             
             guard let params = params else {
-               return urlRequest
+                return .success(urlRequest)
             }
             
             guard let urlString = urlRequest.url?.absoluteString else {
-                throw EncodingErrors.failedCreateStringUrl
+                return .failure(UrlErrors.failedCreateStringFromUrl)
             }
             
             guard var urlComponents = URLComponents(string: urlString) else {
-                throw EncodingErrors.failedCreateUrlComponents
+                return .failure(UrlErrors.failedCreateUrlComponents)
             }
             
             urlComponents.queryItems = params.createURLComponents()
             
             guard let url = urlComponents.url else {
-                throw EncodingErrors.failedCreateUrlFromUrlComponents
+                return .failure(UrlErrors.failedCreateUrlFromUrlComponents)
             }
             
             urlRequest = URLRequest(url: url)
@@ -72,13 +72,13 @@ enum EncodeType {
         case .MultipartDataEncode(let parts, let boundary):
             
             guard let parts = parts else {
-                return urlRequest
+                return .success(urlRequest)
             }
             
             urlRequest.httpBody = MultipartBody(boundary: boundary, parts: parts).getData()
         }
         
-        return urlRequest
+        return .success(urlRequest)
         
     }
     
@@ -89,20 +89,12 @@ extension EncodeType  {
     
     enum EncodingErrors: Error, LocalizedError {
         
-        case failedCreateStringUrl
-        case failedCreateUrlFromUrlComponents
-        case failedCreateUrlComponents
+      
         case failedJSONEncodeParameters
         case failedURLEncodeParameters
         
         public var localizedDescription: String {
             switch self {
-            case .failedCreateStringUrl:
-               return "Failed to create string from urlRequest url"
-            case .failedCreateUrlFromUrlComponents:
-                return "Failed to create url from urlComponents"
-            case .failedCreateUrlComponents:
-                return "Failed to create url components"
             case .failedJSONEncodeParameters:
                 return "Failed encode parameters to JSON"
             case .failedURLEncodeParameters:

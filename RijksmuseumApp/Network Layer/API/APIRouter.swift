@@ -55,18 +55,18 @@ public enum APIRouter {
 
 extension APIRouter: NetworkRequestConstructor {
     
-    public func asUrlRequest() throws -> URLRequest {
+    public func asUrlRequest() -> Result <URLRequest, Error> {
         
         let resourse = ApiConfig.baseUrl + endpoint
         
         guard let url = URL(string: resourse) else {
-            fatalError("can't create URL by resourse: \(resourse)")
+            return (.failure(UrlErrors.failedCreateUrlFomString))
         }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         
-        return try encodeType.encode(request: urlRequest)
+        return encodeType.encode(request: urlRequest)
         
     }
     

@@ -18,26 +18,3 @@ class Creator: Decodable {
     var placeOfDeath: String?
     
 }
-
-
-
-//    private enum CodingKeys: String, CodingKey {
-//        case name
-//        case placeOfBirth
-//        case dateOfBirth
-//        case dateOfDeath
-//        case placeOfDeath
-//    }
-//
-//    required init(from decoder: Decoder) throws {
-//
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        name = try container.decode(String.self, forKey: .name)
-//        placeOfBirth = try container.decode(String.self, forKey: .placeOfBirth)
-//        dateOfBirth = try container.decode(String.self, forKey: .dateOfBirth)
-//
-//        dateOfDeath = try container.decodeIfPresent(String.self, forKey: .dateOfDeath) ?? ""
-//        placeOfDeath = try container.decodeIfPresent(String.self, forKey: .placeOfDeath) ?? ""
-//
-//    }
