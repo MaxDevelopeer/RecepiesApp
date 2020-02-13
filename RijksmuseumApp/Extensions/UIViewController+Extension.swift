@@ -15,3 +15,16 @@ extension UIViewController {
     }
     
 }
+
+
+ 
+extension UIViewController {
+    
+    func configureNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+    }
+    
+}

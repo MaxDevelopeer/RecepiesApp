@@ -60,15 +60,3 @@ class ObjectScreenViewController: UIViewController {
 }
 
 
-// MARK: Private Methods
-
-private extension ObjectScreenViewController {
-    
-    func configureNavigationBar() {
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-    }
-    
-}
