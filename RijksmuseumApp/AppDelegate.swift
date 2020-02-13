@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let service = CollectionObjectService()
         let collectionViewModel = ObjectViewModel(collectionObjectService: service, objectId: "SK-C-5")
-        let vc = ObjectScreenViewController(collectionObjectViewModel: collectionViewModel)
+        let vc = CollectionScreenViewController(nibName: "CollectionScreenViewController", bundle: nil)
+      //  let vc = ObjectScreenViewController(collectionObjectViewModel: collectionViewModel)
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
         
