@@ -13,8 +13,8 @@ enum APIRouter {
     
     case search(
         mainIngredient: String,
-        from: Int?,
-        to: Int?,
+        from: Int,
+        to: Int,
         dietType: DietType?,
         healthType: HealthType?
     )

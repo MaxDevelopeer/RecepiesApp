@@ -42,7 +42,7 @@ class RecipesListScreenViewController: UIViewController {
         recipesListCollectionView?.register(UINib(nibName: String(describing: RecipesListCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: RecipesListCollectionViewCell.self))
         
         
-        recipesListScreenViewModel.loadRecipes {
+        recipesListScreenViewModel.loadRecipes(page: .fromStart) {
             DispatchQueue.main.async {
                 self.recipesListCollectionView?.reloadData()
             }
@@ -93,6 +93,16 @@ extension RecipesListScreenViewController: UICollectionViewDelegate, UICollectio
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.item == recipesListScreenViewModel.itemsCount - 1 else {
+            return
+        }
+        
+        recipesListScreenViewModel.loadRecipes(page: .next) {
+            DispatchQueue.main.async { self.recipesListCollectionView?.reloadData() }
+        }
     }
     
 }

@@ -17,28 +17,46 @@ class RecipesListScreenViewModel {
     // MARK: Public Properties
     
     var itemsCount: Int {
-        return object?.hits.count ?? 0
+        return recipesLists.reduce(0) { $0 + $1.recipesObjects.count }
+    }
+    
+    private func recipesListIndex(for index: Int) -> Int {
+        
+        if index < recipesService.pageSize && itemsCount >= index {
+            return 0
+        }
+        
+        let listIndex = index / recipesService.pageSize
+        
+        //let recipesCountInNotFullyList = index - recipesService.pageSize * fullLists
+        
+        return listIndex
+        //(recipesCountInNotFullyList > 0 && fullLists != 0) ? fullLists : fullLists - 1
+    
     }
     
     
     func getTitleForRecipe(at indexPath: IndexPath) -> String? {
-            
-        let index = indexPath.item
         
-        guard let hits = object else {
-            return nil
-        }
+        guard itemsCount >= indexPath.item else { return nil }
         
-        return hits.hits[index].recipe.title
+        let index = indexPath.item - recipesListIndex(for: indexPath.item) * recipesService.pageSize
+        
+        let listIndex = recipesListIndex(for: indexPath.item)
+        
+        return recipesLists[listIndex].recipesObjects[index].recipe.title
     }
     
 
     func getRecipeViewModel(at indexPath: IndexPath) -> RecipeViewModel? {
         
+        guard itemsCount >= indexPath.item else { return nil }
         
-        guard let recipe = object?.hits[indexPath.item].recipe else {
-            return nil
-        }
+        let listIndex = recipesListIndex(for: indexPath.item)
+        
+        let index = indexPath.item - recipesListIndex(for: indexPath.item) * recipesService.pageSize
+        
+        let recipe = recipesLists[listIndex].recipesObjects[index].recipe
         
         return RecipeViewModel(recipe: recipe)
     }
@@ -47,13 +65,13 @@ class RecipesListScreenViewModel {
     
     // MARK: Private Properties
     
-    private var object: Hits?
+    private var recipesLists = [RecipesList]()
 
     
     
     // MARK: Private Constants
     
-    private var recipesService: RecipesServiceBase?
+    private let recipesService: RecipesServiceBase
    
     
     
@@ -66,13 +84,20 @@ class RecipesListScreenViewModel {
     
     func loadImageForObject(at indexPath: IndexPath, completion: @escaping (UIImage?) -> ()) {
         
-        guard let hits = object else {
+        let index = indexPath.item - recipesListIndex(for: indexPath.item) * recipesService.pageSize
+        
+         
+        
+        let listIndex = recipesListIndex(for: indexPath.item)
+        
+        guard itemsCount >= (index + listIndex * recipesService.pageSize) else {
             completion(nil)
             return
         }
+               
+        let recipeUrl = recipesLists[listIndex].recipesObjects[index].recipe.imageUrl
         
-        
-        recipesService?.loadImageForObjectWith(url: hits.hits[indexPath.item].recipe.imageUrl) { (result) in
+        recipesService.loadImageForObjectWith(url: recipeUrl) { (result) in
 
             guard let image = result.successResult else {
                 print(result.unwrapFailureResult.localizedDescription)
@@ -80,7 +105,7 @@ class RecipesListScreenViewModel {
                 return
             }
             
-            self.object?.hits[indexPath.item].recipe.image = image
+            self.recipesLists[listIndex].recipesObjects[index].recipe.image = image
             completion(image)
         }
         
@@ -93,23 +118,48 @@ class RecipesListScreenViewModel {
 
 extension RecipesListScreenViewModel {
     
-    func loadRecipes(completion: @escaping () -> ()) {
-        let requestTypeResult = APIRouter.search(mainIngredient: "ham", from: nil, to: nil, dietType: nil, healthType: nil).asUrlRequest()
+    func loadRecipes(page: PageLoader, completion: @escaping () -> ()) {
+        
+        let pageParams = page.getPageParamsFor(currentPage: recipesService.currentPage, pageSize: recipesService.pageSize)
+        
+        let requestTypeResult = APIRouter.search(mainIngredient: "chicken", from: pageParams.from, to: pageParams.to, dietType: nil, healthType: nil).asUrlRequest()
         
         guard let request = requestTypeResult.successResult else {
             print(requestTypeResult.unwrapFailureResult.localizedDescription)
             return
         }
         
-        recipesService?.loadRecipesBy(request: request) { (result) in
+        recipesService.loadRecipesBy(request: request) { (result) in
             
-            guard let hits = result.successResult else {
+            guard let recipesList = result.successResult else {
                 print(result.unwrapFailureResult.localizedDescription)
                 return
             }
             
-            self.object = hits
+            self.recipesLists.append(recipesList)
             completion()    
+        }
+        
+    }
+    
+    
+    enum PageLoader {
+        
+        case fromStart
+        case next
+        
+        
+        // FIXME:- fix this hardcode
+        func getPageParamsFor(currentPage: Int, pageSize: Int) -> (from: Int, to: Int) {
+            switch self {
+            case .fromStart:
+                return (0,29)
+            case .next:
+                let from = currentPage * pageSize
+                let to = from + pageSize
+                return(from, to)
+            }
+            
         }
         
     }

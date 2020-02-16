@@ -17,10 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let service = RecipesService()
+        let service = RecipesService(pageSize: 30)
         let recipesViewModel = RecipesListScreenViewModel(recipesService: service)
-        //let vc = CollectionScreenViewController(nibName: "CollectionScreenViewController", bundle: nil)
-        let vc = RecipesListScreenViewController(recipesListScreenViewModel: recipesViewModel)//ObjectScreenViewController(collectionObjectViewModel: collectionViewModel)
+        
+        let vc = RecipesListScreenViewController(recipesListScreenViewModel: recipesViewModel)
+        
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
         

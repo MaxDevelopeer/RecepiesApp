@@ -10,9 +10,16 @@ import Foundation
 import UIKit
 
 
-struct RecipesService: RecipesServiceBase {
+class RecipesService: RecipesServiceBase {
     
     
+    private(set) var pageSize: Int
+    private(set) var currentPage: Int
+    
+    init(pageSize: Int) {
+        self.pageSize = pageSize
+        self.currentPage = 0
+    }
     
     private let networkClient: NetworkClient = {
         var configuration = URLSessionConfiguration.default
@@ -22,18 +29,20 @@ struct RecipesService: RecipesServiceBase {
     
     func loadRecipesBy(request: URLRequest, completion: @escaping loadObjectsResult) {
         
-        networkClient.requestFor(urlRequest: request) { (result) in
+        networkClient.requestFor(urlRequest: request) { [weak self] (result) in
+            guard let self = self else { return }
             
             guard let data = result.successResult else {
                 completion(.failure(result.unwrapFailureResult))
                 return
             }
             
-            guard let object = Hits.deserialize(with: data) else {
+            guard let object = RecipesList.deserialize(with: data) else {
                 completion(.failure(LoadingErrors.failedDeserializeCollectionObject))
                 return
             }
             
+            self.currentPage += 1
             completion(.success(object))
         }
     }

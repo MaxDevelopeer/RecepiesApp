@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-typealias loadObjectsResult = (Result<Hits, Error>) -> ()
+typealias loadObjectsResult = (Result<RecipesList, Error>) -> ()
 typealias loadImageResult = (Result<UIImage?, Error>) -> ()
 
-protocol RecipesServiceBase {
-    
-    mutating func loadRecipesBy(request: URLRequest, completion: @escaping loadObjectsResult)
+protocol RecipesServiceBase: PaginatorBase {
+
+    func loadRecipesBy(request: URLRequest, completion: @escaping loadObjectsResult)
     func loadImageForObjectWith(url: URL, completion: @escaping loadImageResult)
     
 }
