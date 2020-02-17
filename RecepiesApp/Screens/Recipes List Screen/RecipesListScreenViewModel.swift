@@ -166,7 +166,6 @@ extension RecipesListScreenViewModel {
         case next
         
         
-        // FIXME:- fix this hardcode
         func getPageParamsFor(currentPage: Int, pageSize: Int) -> (from: Int, to: Int) {
             switch self {
             case .fromStart:

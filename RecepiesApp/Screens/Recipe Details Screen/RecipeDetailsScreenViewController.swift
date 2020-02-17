@@ -39,7 +39,7 @@ class RecipeDetailsScreenViewController: UIViewController {
         
         configureNavigationBar()
         
-        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.title = recipeViewModel.getRecipeTitle
        
     }
