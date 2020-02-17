@@ -29,7 +29,6 @@
 		9450A25123F0807600B89DC3 /* NetworkRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A25023F0807600B89DC3 /* NetworkRequestConstructor.swift */; };
 		9450A27923F082FA00B89DC3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A27823F082FA00B89DC3 /* Recipe.swift */; };
 		9450A28223F3410400B89DC3 /* RecipesServiceBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A28123F3410400B89DC3 /* RecipesServiceBase.swift */; };
-		9450A28423F3424400B89DC3 /* CollectionObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A28323F3424400B89DC3 /* CollectionObjectService.swift */; };
 		9450A28623F498C600B89DC3 /* ObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450A28523F498C600B89DC3 /* ObjectViewModel.swift */; };
 		EE07A1AA23F5442B00C972DB /* BaseNetworkRequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07A1A923F5442B00C972DB /* BaseNetworkRequestConstructor.swift */; };
 		EE07A1AD23F579D400C972DB /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07A1AC23F579D400C972DB /* Dictionary+Extension.swift */; };
@@ -82,7 +81,6 @@
 		9450A25023F0807600B89DC3 /* NetworkRequestConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestConstructor.swift; sourceTree = "<group>"; };
 		9450A27823F082FA00B89DC3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		9450A28123F3410400B89DC3 /* RecipesServiceBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesServiceBase.swift; sourceTree = "<group>"; };
-		9450A28323F3424400B89DC3 /* CollectionObjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionObjectService.swift; sourceTree = "<group>"; };
 		9450A28523F498C600B89DC3 /* ObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewModel.swift; sourceTree = "<group>"; };
 		EE07A1A923F5442B00C972DB /* BaseNetworkRequestConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequestConstructor.swift; sourceTree = "<group>"; };
 		EE07A1AC23F579D400C972DB /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				9450A28123F3410400B89DC3 /* RecipesServiceBase.swift */,
-				9450A28323F3424400B89DC3 /* CollectionObjectService.swift */,
 				941BDA7023F8789300140278 /* RecipesService.swift */,
 				941BDA7923F9A21B00140278 /* PaginatorBase.swift */,
 			);
@@ -410,7 +407,6 @@
 				941BDA6923F850D100140278 /* RecipesList.swift in Sources */,
 				941BDA6F23F874A500140278 /* RecipesListScreenViewModel.swift in Sources */,
 				9450A24D23F0803500B89DC3 /* Deserializable.swift in Sources */,
-				9450A28423F3424400B89DC3 /* CollectionObjectService.swift in Sources */,
 				9450A28623F498C600B89DC3 /* ObjectViewModel.swift in Sources */,
 				EE07A1B823F58C3300C972DB /* RecipesListScreenViewController.swift in Sources */,
 				EEFB8D0923F3F31000ED13B6 /* MultipartBody.swift in Sources */,
