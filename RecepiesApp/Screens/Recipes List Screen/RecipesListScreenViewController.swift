@@ -96,12 +96,15 @@ extension RecipesListScreenViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard indexPath.item == recipesListScreenViewModel.itemsCount - 1 else {
+        guard indexPath.item == recipesListScreenViewModel.itemsCount - 4 else {
             return
         }
         
         recipesListScreenViewModel.loadRecipes(page: .next) {
-            DispatchQueue.main.async { self.recipesListCollectionView?.reloadData() }
+            
+            DispatchQueue.main.async {
+                self.recipesListCollectionView?.insertItems(at: self.recipesListScreenViewModel.getIndexPathsForNewItems())
+            } //DispatchQueue.main.async { self.recipesListCollectionView?.reloadData() }
         }
     }
     

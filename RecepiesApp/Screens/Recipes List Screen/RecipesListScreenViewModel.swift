@@ -28,10 +28,7 @@ class RecipesListScreenViewModel {
         
         let listIndex = index / recipesService.pageSize
         
-        //let recipesCountInNotFullyList = index - recipesService.pageSize * fullLists
-        
         return listIndex
-        //(recipesCountInNotFullyList > 0 && fullLists != 0) ? fullLists : fullLists - 1
     
     }
     
@@ -122,7 +119,11 @@ extension RecipesListScreenViewModel {
         
         let pageParams = page.getPageParamsFor(currentPage: recipesService.currentPage, pageSize: recipesService.pageSize)
         
-        let requestTypeResult = APIRouter.search(mainIngredient: "chicken", from: pageParams.from, to: pageParams.to, dietType: nil, healthType: nil).asUrlRequest()
+        let requestTypeResult = APIRouter.search(mainIngredient: "chicken",
+                                                 from: pageParams.from,
+                                                 to: pageParams.to,
+                                                 dietType: nil,
+                                                 healthType: nil).asUrlRequest()
         
         guard let request = requestTypeResult.successResult else {
             print(requestTypeResult.unwrapFailureResult.localizedDescription)
@@ -142,6 +143,22 @@ extension RecipesListScreenViewModel {
         
     }
     
+    func getIndexPathsForNewItems() -> [IndexPath] {
+        
+        let from = (recipesService.currentPage - 1) * recipesService.pageSize
+        let to = from + recipesLists[recipesService.currentPage - 1].recipesObjects.count //recipesService.pageSize
+        
+        var indexPaths = [IndexPath]()
+        
+        for index in from..<to {
+            indexPaths.append(IndexPath(item: index, section: 0))
+        }
+        
+        return indexPaths
+      
+        
+    }
+    
     
     enum PageLoader {
         
@@ -153,7 +170,7 @@ extension RecipesListScreenViewModel {
         func getPageParamsFor(currentPage: Int, pageSize: Int) -> (from: Int, to: Int) {
             switch self {
             case .fromStart:
-                return (0,29)
+                return (0, pageSize)
             case .next:
                 let from = currentPage * pageSize
                 let to = from + pageSize
