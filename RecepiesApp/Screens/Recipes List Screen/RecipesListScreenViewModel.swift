@@ -103,7 +103,7 @@ class RecipesListScreenViewModel {
             }
             
             self.recipesLists[listIndex].recipesObjects[index].recipe.image = image
-            completion(image)
+            DispatchQueue.main.async { completion(image) }
         }
         
     }
@@ -138,7 +138,7 @@ extension RecipesListScreenViewModel {
             }
             
             self.recipesLists.append(recipesList)
-            completion()    
+            DispatchQueue.main.async { completion() }
         }
         
     }

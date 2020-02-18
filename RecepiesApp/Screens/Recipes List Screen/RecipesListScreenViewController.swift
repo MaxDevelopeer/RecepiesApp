@@ -18,7 +18,7 @@ class RecipesListScreenViewController: UIViewController {
         }
     }
     
-
+    
     private let recipesListScreenViewModel: RecipesListScreenViewModel
     
     
@@ -39,42 +39,15 @@ class RecipesListScreenViewController: UIViewController {
         configureNavigationBar()
         self.navigationItem.title = "Recipes List"
         
-        recipesListCollectionView?.register(
-            UINib(nibName: String(describing: RecipesListCollectionViewCell.self), bundle: nil),
-            forCellWithReuseIdentifier: String(describing: RecipesListCollectionViewCell.self))
-        
-        recipesListCollectionView?.register(
-        UINib(nibName: String(describing: RecipesListCollectionViewLoadingCell.self), bundle: nil),
-        forCellWithReuseIdentifier: String(describing: RecipesListCollectionViewLoadingCell.self))
-        
-//        recipesListCollectionView?.register(
-//            UINib(nibName: String(describing: RecipesListCollectionViewFooter.self), bundle: nil),
-//            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-//            withReuseIdentifier: String(describing: RecipesListCollectionViewFooter.self))
-//
-        
-        recipesListScreenViewModel.loadRecipes(page: .fromStart) {
-            DispatchQueue.main.async {
-                self.recipesListCollectionView?.reloadData()
-            }
-        }
-        
+        recipesListCollectionView?.registerCell(type: RecipesListCollectionViewCell.self)
+        recipesListCollectionView?.registerCell(type: RecipesListCollectionViewLoadingCell.self)
+
+        recipesListScreenViewModel.loadRecipes(page: .fromStart) { self.recipesListCollectionView?.reloadData() }
     }
-    
-    
     
 }
 
 
-extension RecipesListScreenViewController: UISearchBarDelegate {
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    
-}
- 
 extension RecipesListScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -95,28 +68,19 @@ extension RecipesListScreenViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        
         if indexPath.section == 0 {
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RecipesListCollectionViewCell.self), for: indexPath)
-                as? RecipesListCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.getReusableCell(type: RecipesListCollectionViewCell.self, for: indexPath) else { return UICollectionViewCell() }
             
-            
-            
-            
-            recipesListScreenViewModel.loadImageForObject(at: indexPath, completion: { (image) in
-                DispatchQueue.main.async {
-                    cell.recipeImage?.image = image
-                }
-            })
+            recipesListScreenViewModel.loadImageForObject(at: indexPath) { cell.recipeImage?.image = $0 }
             
             cell.titleLabel?.text = recipesListScreenViewModel.getTitleForRecipe(at: indexPath)
             return cell
-        } else {
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RecipesListCollectionViewLoadingCell.self), for: indexPath)
-                as? RecipesListCollectionViewLoadingCell else { return UICollectionViewCell() }
-            
-            return cell
+        }
+        else {
+            return collectionView.getReusableCell(type: RecipesListCollectionViewLoadingCell.self, for: indexPath) ?? UICollectionViewCell()
             
         }
     }
@@ -143,16 +107,12 @@ extension RecipesListScreenViewController: UICollectionViewDelegate, UICollectio
         
         recipesListScreenViewModel.loadRecipes(page: .next) {
             loadingCell.stopLoading()
-            DispatchQueue.main.async {
-                self.recipesListCollectionView?.insertItems(at: self.recipesListScreenViewModel.getIndexPathsForNewItems())
-            }
+            self.recipesListCollectionView?.insertItems(at: self.recipesListScreenViewModel.getIndexPathsForNewItems())
         }
-        
-        
     }
     
+    
 }
-
 
 
 extension RecipesListScreenViewController: UICollectionViewDelegateFlowLayout {
@@ -169,3 +129,53 @@ extension RecipesListScreenViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+
+//private extension RecipesListScreenViewController {
+//
+//
+//        enum RecipesCollectionViewConfigurator {
+//
+//            static func getSectionBy(indexPath: IndexPath) -> RecipesCollectionViewConfigurator {
+//                if indexPath.section == 0 { return RecipesCollectionViewConfigurator.firstSection }
+//                if indexPath.section == 1 { return RecipesCollectionViewConfigurator.secondSection }
+//                return RecipesCollectionViewConfigurator.firstSection
+//            }
+//
+//            case firstSection
+//            case secondSection
+//
+//            func sizeOfItemFor(collectionView: UICollectionView) -> CGSize {
+//                switch self {
+//                case .firstSection:
+//                    return CGSize(width: collectionView.bounds.width * 0.5 - 5, height: 200)
+//                case .secondSection:
+//                    return CGSize(width: collectionView.bounds.width, height: 120)
+//                }
+//            }
+//
+//            func reusableCellFor(collectionView: UICollectionView, indexPath: IndexPath) -> NibLoadarable {
+//                switch self {
+//                case .firstSection:
+//                    return collectionView.getReusableCell(type: RecipesListCollectionViewCell.self, for: indexPath) ?? UICollectionViewCell()
+//                case .secondSection:
+//                    return collectionView.getReusableCell(type: RecipesListCollectionViewLoadingCell.self, for: indexPath) ?? UICollectionViewCell()
+//                }
+//                
+//            }
+//
+//
+//        }
+//    }
+//
+//
+////}
+////
+////protocol CollectionViewConfigurator {
+////
+////    var amountOfSections: Int { get }
+////
+////    var sizeOfItem
+////
+////
+////}

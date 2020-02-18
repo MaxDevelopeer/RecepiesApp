@@ -56,6 +56,7 @@
 		EEFB8D1023F3F32500ED13B6 /* EncodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8D0F23F3F32500ED13B6 /* EncodeType.swift */; };
 		EEFB8D1423F43D2100ED13B6 /* ObjectScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEFB8D1323F43D2100ED13B6 /* ObjectScreenViewController.xib */; };
 		EEFB8D1623F43D3000ED13B6 /* ObjectScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8D1523F43D3000ED13B6 /* ObjectScreenViewController.swift */; };
+		EEFF9FFF23FBD44800B77685 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFF9FFE23FBD44800B77685 /* UICollectionViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		EEFB8D0F23F3F32500ED13B6 /* EncodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodeType.swift; sourceTree = "<group>"; };
 		EEFB8D1323F43D2100ED13B6 /* ObjectScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ObjectScreenViewController.xib; sourceTree = "<group>"; };
 		EEFB8D1523F43D3000ED13B6 /* ObjectScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectScreenViewController.swift; sourceTree = "<group>"; };
+		EEFF9FFE23FBD44800B77685 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 				EE07A1B023F57A3400C972DB /* Data+Extension.swift */,
 				EE07A1B223F57B0B00C972DB /* UIViewController+Extension.swift */,
 				EE07A1B423F57B3500C972DB /* Result+Extension.swift */,
+				EEFF9FFE23FBD44800B77685 /* UICollectionViewCell+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				EEFB8D0A23F3F31000ED13B6 /* FilePart.swift in Sources */,
 				EEFB8D0C23F3F31000ED13B6 /* ParamPart.swift in Sources */,
 				EEFB8CF923F3F2E100ED13B6 /* APIRouter.swift in Sources */,
+				EEFF9FFF23FBD44800B77685 /* UICollectionViewCell+Extension.swift in Sources */,
 				9450A23123F07DE100B89DC3 /* AppDelegate.swift in Sources */,
 				941BDA6923F850D100140278 /* RecipesList.swift in Sources */,
 				941BDA6F23F874A500140278 /* RecipesListScreenViewModel.swift in Sources */,
