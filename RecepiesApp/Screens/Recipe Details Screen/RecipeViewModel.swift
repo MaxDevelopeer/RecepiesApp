@@ -30,6 +30,14 @@ class RecipeViewModel {
         return Int(recipe.totalWeight)
     }
     
+    var getRecipeIngredientCount: Int {
+        return recipe.ingredients?.count ?? 0
+    }
+    
+    func getRecipeIngredient(on indexPath: IndexPath ) -> String {
+        return recipe.ingredients?[indexPath.row].text ?? ""
+    }
+    
     init(recipe: Recipe) {
         self.recipe = recipe
     }

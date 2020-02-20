@@ -17,6 +17,7 @@ class RecipesListCollectionViewCell: UICollectionViewCell {
             recipeImage?.layer.cornerRadius = 5.0
         }
     }
+    
     @IBOutlet var titleLabel: UILabel?
     
     

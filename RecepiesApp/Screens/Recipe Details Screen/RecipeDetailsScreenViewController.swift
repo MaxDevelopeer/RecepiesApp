@@ -10,6 +10,12 @@ import UIKit
 
 class RecipeDetailsScreenViewController: UIViewController {
 
+    @IBOutlet private var recipesTableView: UITableView? {
+        didSet {
+            recipesTableView?.delegate = self
+            recipesTableView?.dataSource = self
+        }
+    }
     @IBOutlet private var recipeDescriptionLabel: UILabel?
     @IBOutlet private var recipeImageView: UIImageView? {
         didSet {
@@ -37,12 +43,34 @@ class RecipeDetailsScreenViewController: UIViewController {
         recipeDescriptionLabel?.text = "Calories: \(recipeViewModel.getRecipeCalories)"
         recipeImageView?.image = recipeViewModel.getRecipeImage
         
+        recipesTableView?.registerCell(type: RecipeDetailsScreenTableViewCell.self)
+        
         configureNavigationBar()
         
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.title = recipeViewModel.getRecipeTitle
        
     }
+    
+}
+
+
+extension RecipeDetailsScreenViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        recipeViewModel.getRecipeIngredientCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.getReusableCell(type: RecipeDetailsScreenTableViewCell.self, to: indexPath) else {
+            return UITableViewCell()
+        }
+        
+        cell.recipesIngredientLabel?.text = recipeViewModel.getRecipeIngredient(on: indexPath)
+        return cell
+    }
+    
     
     
 }
