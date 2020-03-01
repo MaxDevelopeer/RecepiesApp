@@ -105,7 +105,7 @@ extension RecipesListScreenViewController: UICollectionViewDelegateFlowLayout {
 
 
 
-enum SectionsSetuper {
+fileprivate enum SectionsSetuper {
     
     case first
     case second

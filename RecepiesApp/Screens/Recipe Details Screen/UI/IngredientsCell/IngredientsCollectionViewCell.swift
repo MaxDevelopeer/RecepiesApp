@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RecipeDetailsScreenTableViewCell: UITableViewCell {
+class IngredientsCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var recipesIngredientLabel: UILabel?
+    @IBOutlet var recipesIngredientLabel: UILabel?
 
     
 }

@@ -35,13 +35,20 @@ class RecipeViewModel {
     }
     
     func getRecipeIngredient(on indexPath: IndexPath ) -> String {
-        return recipe.ingredients?[indexPath.row].text ?? ""
+        return "• " + (recipe.ingredients?[indexPath.row].text ?? "")
     }
     
     init(recipe: Recipe) {
         self.recipe = recipe
     }
     
+    func getHeightOfIngredientLabel(for indexPath: IndexPath, width: CGFloat) -> CGFloat? {
+        guard let text = recipe.ingredients?[indexPath.row].text else { return nil }
+        let height = text.heightWithConstrainedWidth(width: width - 50.0, font: UIFont(name: "HelveticaNeue", size: 17.0)!)
+        print (height)
+        return height
+        
+    }
     
     
 }

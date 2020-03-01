@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TitleHeaderCollectionReusableView" id="eL9-T9-ZF3" customClass="TitleHeaderCollectionReusableView" customModule="RecepiesApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="473" height="137"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-2x-lky">
+                    <rect key="frame" x="20" y="87.5" width="61.5" height="29.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsK-GZ-SJA">
+                    <rect key="frame" x="20" y="126" width="453" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="UPw-u7-h4c"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Pug-2x-lky" firstAttribute="leading" secondItem="uwd-EA-4vK" secondAttribute="leading" constant="20" id="7lb-cN-Rvj"/>
+                <constraint firstAttribute="bottom" secondItem="Pug-2x-lky" secondAttribute="bottom" constant="20" id="KXU-aW-w6h"/>
+                <constraint firstItem="PsK-GZ-SJA" firstAttribute="leading" secondItem="eL9-T9-ZF3" secondAttribute="leading" constant="20" id="cFa-dp-A31"/>
+                <constraint firstAttribute="bottom" secondItem="PsK-GZ-SJA" secondAttribute="bottom" constant="10" id="dHc-19-FxZ"/>
+                <constraint firstAttribute="trailing" secondItem="PsK-GZ-SJA" secondAttribute="trailing" id="qnt-Fe-boN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="uwd-EA-4vK"/>
+            <connections>
+                <outlet property="sectionTitleLabel" destination="Pug-2x-lky" id="VxB-t5-Ocf"/>
+            </connections>
+            <point key="canvasLocation" x="-12.318840579710146" y="92.075892857142847"/>
+        </collectionReusableView>
+    </objects>
+</document>
