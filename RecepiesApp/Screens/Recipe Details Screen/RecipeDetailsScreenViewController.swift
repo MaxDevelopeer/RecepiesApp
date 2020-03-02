@@ -40,13 +40,11 @@ class RecipeDetailsScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureNavigationBar()
         SectionsSetuperDetail.collectionView = recipeDetailCollectionView ?? UICollectionView()
         SectionsSetuperDetail.recipesListViewModel = recipeViewModel
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.title = recipeViewModel.getRecipeTitle
-       
     }
     
 }
@@ -120,7 +118,7 @@ enum SectionsSetuperDetail {
     func getSizeOfItem(for indexPath: IndexPath) -> CGSize {
         switch self {
         case .first:
-            return CGSize(width: SectionsSetuperDetail.collectionView.bounds.width, height: 250)
+            return CGSize(width: SectionsSetuperDetail.collectionView.bounds.width, height: 275)
         case .second:
             guard let height = SectionsSetuperDetail.recipesListViewModel?.getHeightOfIngredientLabel(for: indexPath, width: SectionsSetuperDetail.collectionView.bounds.width) else {
                 return CGSize(width: SectionsSetuperDetail.collectionView.bounds.width, height: 40)

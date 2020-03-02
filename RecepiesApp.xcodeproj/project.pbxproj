@@ -45,6 +45,12 @@
 		EE07A1B823F58C3300C972DB /* RecipesListScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07A1B723F58C3300C972DB /* RecipesListScreenViewController.swift */; };
 		EE07A1BA23F58C4700C972DB /* RecipesListScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE07A1B923F58C4700C972DB /* RecipesListScreenViewController.xib */; };
 		EE07A1BF23F5A33400C972DB /* RecipesListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE07A1BE23F5A33400C972DB /* RecipesListCollectionViewCell.xib */; };
+		EE10E7F1240D071D00F98710 /* ChooseRecipeScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE10E7F0240D071D00F98710 /* ChooseRecipeScreenViewController.xib */; };
+		EE10E7F3240D074100F98710 /* ChooseRecipeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE10E7F2240D074100F98710 /* ChooseRecipeScreenViewController.swift */; };
+		EE10E7FC240D169B00F98710 /* VerticalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE10E7FB240D169B00F98710 /* VerticalCollectionViewCell.xib */; };
+		EE10E7FE240D16CD00F98710 /* VerticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE10E7FD240D16CD00F98710 /* VerticalCollectionViewCell.swift */; };
+		EE10E803240D2CED00F98710 /* BaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE10E802240D2CED00F98710 /* BaseTableViewCell.xib */; };
+		EE10E805240D2D0400F98710 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE10E804240D2D0400F98710 /* BaseTableViewCell.swift */; };
 		EEFB8CF923F3F2E100ED13B6 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8CF423F3F2E100ED13B6 /* APIRouter.swift */; };
 		EEFB8CFA23F3F2E100ED13B6 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8CF523F3F2E100ED13B6 /* APIConfig.swift */; };
 		EEFB8CFB23F3F2E100ED13B6 /* APIRequestBodyParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB8CF623F3F2E100ED13B6 /* APIRequestBodyParts.swift */; };
@@ -105,6 +111,12 @@
 		EE07A1B723F58C3300C972DB /* RecipesListScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenViewController.swift; sourceTree = "<group>"; };
 		EE07A1B923F58C4700C972DB /* RecipesListScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipesListScreenViewController.xib; sourceTree = "<group>"; };
 		EE07A1BE23F5A33400C972DB /* RecipesListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipesListCollectionViewCell.xib; sourceTree = "<group>"; };
+		EE10E7F0240D071D00F98710 /* ChooseRecipeScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseRecipeScreenViewController.xib; sourceTree = "<group>"; };
+		EE10E7F2240D074100F98710 /* ChooseRecipeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRecipeScreenViewController.swift; sourceTree = "<group>"; };
+		EE10E7FB240D169B00F98710 /* VerticalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerticalCollectionViewCell.xib; sourceTree = "<group>"; };
+		EE10E7FD240D16CD00F98710 /* VerticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE10E802240D2CED00F98710 /* BaseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTableViewCell.xib; sourceTree = "<group>"; };
+		EE10E804240D2D0400F98710 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EEFB8CF423F3F2E100ED13B6 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		EEFB8CF523F3F2E100ED13B6 /* APIConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		EEFB8CF623F3F2E100ED13B6 /* APIRequestBodyParts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestBodyParts.swift; sourceTree = "<group>"; };
@@ -294,6 +306,33 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		EE10E7F4240D095600F98710 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EE10E801240D2CD000F98710 /* Base Cell */,
+				EE10E7FA240D168800F98710 /* Vertical Cell */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		EE10E7FA240D168800F98710 /* Vertical Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EE10E7FB240D169B00F98710 /* VerticalCollectionViewCell.xib */,
+				EE10E7FD240D16CD00F98710 /* VerticalCollectionViewCell.swift */,
+			);
+			path = "Vertical Cell";
+			sourceTree = "<group>";
+		};
+		EE10E801240D2CD000F98710 /* Base Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EE10E802240D2CED00F98710 /* BaseTableViewCell.xib */,
+				EE10E804240D2D0400F98710 /* BaseTableViewCell.swift */,
+			);
+			path = "Base Cell";
+			sourceTree = "<group>";
+		};
 		EEFB8CED23F3F2AB00ED13B6 /* Network Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +407,9 @@
 		EEFDEA0923FD3E80007402B4 /* Choose Recipe Screen */ = {
 			isa = PBXGroup;
 			children = (
+				EE10E7F4240D095600F98710 /* UI */,
+				EE10E7F0240D071D00F98710 /* ChooseRecipeScreenViewController.xib */,
+				EE10E7F2240D074100F98710 /* ChooseRecipeScreenViewController.swift */,
 			);
 			path = "Choose Recipe Screen";
 			sourceTree = "<group>";
@@ -442,12 +484,15 @@
 			files = (
 				EE07A1BF23F5A33400C972DB /* RecipesListCollectionViewCell.xib in Resources */,
 				941BDA7C23FB285500140278 /* RecipesListCollectionViewLoadingCell.xib in Resources */,
+				EE10E7F1240D071D00F98710 /* ChooseRecipeScreenViewController.xib in Resources */,
 				EEFDEA0E23FD6598007402B4 /* IngredientsCollectionViewCell.xib in Resources */,
+				EE10E7FC240D169B00F98710 /* VerticalCollectionViewCell.xib in Resources */,
 				941B72D5240BE9F00086B9A3 /* TitleHeaderCollectionReusableView.xib in Resources */,
 				941B72D2240BE9350086B9A3 /* ImageCollectionViewCell.xib in Resources */,
 				9450A23A23F07DE300B89DC3 /* Assets.xcassets in Resources */,
 				941BDA7623F9725700140278 /* RecipeDetailsScreenViewController.xib in Resources */,
 				EE07A1BA23F58C4700C972DB /* RecipesListScreenViewController.xib in Resources */,
+				EE10E803240D2CED00F98710 /* BaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +517,7 @@
 				941BDA7823F973D600140278 /* RecipeViewModel.swift in Sources */,
 				EE07A1AD23F579D400C972DB /* Dictionary+Extension.swift in Sources */,
 				EE07A1AA23F5442B00C972DB /* BaseNetworkRequestConstructor.swift in Sources */,
+				EE10E7FE240D16CD00F98710 /* VerticalCollectionViewCell.swift in Sources */,
 				941BDA6B23F8605900140278 /* Nutrients.swift in Sources */,
 				9450A24F23F0804D00B89DC3 /* NetworkClientProtocol.swift in Sources */,
 				EEFB8D0E23F3F31C00ED13B6 /* HTTPMethod.swift in Sources */,
@@ -485,6 +531,7 @@
 				941BDA6F23F874A500140278 /* RecipesListScreenViewModel.swift in Sources */,
 				9450A24D23F0803500B89DC3 /* Deserializable.swift in Sources */,
 				EE07A1B823F58C3300C972DB /* RecipesListScreenViewController.swift in Sources */,
+				EE10E805240D2D0400F98710 /* BaseTableViewCell.swift in Sources */,
 				EEFB8D0923F3F31000ED13B6 /* MultipartBody.swift in Sources */,
 				9450A28223F3410400B89DC3 /* RecipesServiceBase.swift in Sources */,
 				941BDA6523F7FEB300140278 /* DietType.swift in Sources */,
@@ -499,6 +546,7 @@
 				941BDA7123F8789300140278 /* RecipesService.swift in Sources */,
 				941B72DB240C074D0086B9A3 /* String+Extension.swift in Sources */,
 				941BDA5F23F741D500140278 /* MealType.swift in Sources */,
+				EE10E7F3240D074100F98710 /* ChooseRecipeScreenViewController.swift in Sources */,
 				EEFB8CFB23F3F2E100ED13B6 /* APIRequestBodyParts.swift in Sources */,
 				EEFDEA1023FD6837007402B4 /* UITableViewCell+Extension.swift in Sources */,
 				941BDA6123F7F3D100140278 /* Nutrient.swift in Sources */,
