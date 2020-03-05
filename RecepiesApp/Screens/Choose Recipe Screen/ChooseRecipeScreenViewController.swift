@@ -48,7 +48,7 @@ extension ChooseRecipeScreenViewController: UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.getReusableCell(type: VerticalCollectionViewCell, to: indexPath)
+        return UITableViewCell()//tableView.getReusableCell(type: VerticalCollectionViewCell, to: indexPath)
     }
     
 }

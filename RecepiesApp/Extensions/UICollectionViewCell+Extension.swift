@@ -51,7 +51,6 @@ extension UICollectionView {
         }
     }
     
-    
     func getReusableView<ReusableView: NibLoadarable> (type: ReusableView.Type, for indexPath: IndexPath, kind: String) -> ReusableView? {
            if let reusableView = self.dequeueReusableSupplementaryView(ofKind: kind,
          withReuseIdentifier: type.stringIdentifier, for: indexPath) as? ReusableView {
@@ -72,6 +71,9 @@ protocol CellConfigurator {
     
 }
 
+
+
+
 protocol DataProvider {
     
     var getCollectionView: UICollectionView { get }
@@ -90,6 +92,11 @@ protocol DataProvider {
     
 }
 
+
+
+
+
+
 protocol CollectionConfigurator  {
     
     var dataProvider: DataProvider { get }
@@ -99,7 +106,7 @@ protocol CollectionConfigurator  {
 
 
 class CollectionViewConfigurator: NSObject, CollectionConfigurator {
-  
+    
     let dataProvider: DataProvider
     
     required init(dataProvider: DataProvider) {
