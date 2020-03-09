@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HealthType: String {
+enum HealthType: String, CaseIterable {
     
     case alcoholFree = "alcohol-free"
     case celeryFree = "celery-free"
@@ -24,6 +24,10 @@ enum HealthType: String {
     case lowSugar = "low-sugar"
     case vegan
     case vegetarian
+    
+//    static var amountOfItems: Int {
+//        return 14
+//    }
     
     
     var description: String {

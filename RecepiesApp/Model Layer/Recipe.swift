@@ -60,7 +60,7 @@ import UIKit
 
 
 
-extension Recipe: Deserializable {
+extension Recipe: DeserializableBase {
     
     static func deserialize(with data: Data) -> Recipe? {
         let decoder = JSONDecoder()

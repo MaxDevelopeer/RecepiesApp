@@ -12,7 +12,7 @@ import UIKit
 typealias loadObjectsResult = (Result<RecipesList, Error>) -> ()
 typealias loadImageResult = (Result<UIImage?, Error>) -> ()
 
-protocol RecipesServiceBase: PaginatorBase {
+protocol RecipesServiceBase: PaginatorBase  {
 
     func loadRecipesBy(request: URLRequest, completion: @escaping loadObjectsResult)
     func loadImageForObjectWith(url: URL, completion: @escaping loadImageResult)

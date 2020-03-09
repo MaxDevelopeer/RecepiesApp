@@ -30,7 +30,7 @@ struct RecipeObject: Decodable {
     
 }
 
-extension RecipesList: Deserializable {
+extension RecipesList: DeserializableBase {
     
     static func deserialize(with data: Data) -> RecipesList? {
         

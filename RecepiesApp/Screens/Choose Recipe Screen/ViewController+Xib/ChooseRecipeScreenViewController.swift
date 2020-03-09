@@ -20,12 +20,12 @@ class ChooseRecipeScreenViewController: UIViewController {
             recipeSearchInfoTableView?.dataSource = self
             recipeSearchInfoTableView?.delegate = self
             recipeSearchInfoTableView?.registerCell(
-            type: VerticalCollectionViewCell.self)
+            type: TextLabelCollectionViewCell.self)
         }
     }
     
     init() {
-        super.init(nibName: ChooseRecipeScreenViewController.nibName, bundle: nil)
+        super.init(nibName: ChooseRecipeScreenViewController.stringIdentifier, bundle: nil)
     }
     
     required init?(coder: NSCoder) {

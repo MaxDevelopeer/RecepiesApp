@@ -8,37 +8,54 @@
 
 import Foundation
 
-struct RecipeRequestParameters {
+//struct RecipeRequestParameters {
     
-    enum MealType: String {
+    enum MealType: String, CaseIterable {
         
         case breakfast
         case lunch
         case dinner
         case snack
         
-    }
-    
-    
-    enum DishType: String {
-        
-        case bread
-        case cereals
-        case sauces = "Condiments and sauces"
-        case drinks
-        case desserts
-        case main = "Main course"
-        case pancake
-        case preps
-        case preserve
-        case salad
-        case sandwiches
-        case side = "Side dish"
-        case soup
-        case starter
-        case sweets
+        static var amountOfItems: Int {
+            return 4
+        }
         
     }
     
+
+    
+enum DishType: String, CaseIterable {
+    
+    case bread
+    case cereals
+    case sauces = "Condiments and sauces"
+    case drinks
+    case desserts
+    case main = "Main course"
+    case pancake
+    case preps
+    case preserve
+    case salad
+    case sandwiches
+    case side = "Side dish"
+    case soup
+    case starter
+    case sweets
+    
+    static var amountOfItems: Int {
+        return 15
+    }
+    
+    static var dishTypes: [String] = {
+        var items = [String]()
+        for item in Self.allCases {
+            items.append(item.rawValue)
+        }
+        return items
+    }()
     
 }
+    
+    
+//}

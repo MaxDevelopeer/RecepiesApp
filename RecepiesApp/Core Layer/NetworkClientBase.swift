@@ -11,7 +11,7 @@ import Foundation
 
 public typealias response = (Result <Data, Error>) -> ()
 
-protocol NetworkClientProtocol {
+protocol NetworkClientBase {
     
     func requestFor(urlRequest: URLRequest, completion: @escaping response)
 }

@@ -8,15 +8,6 @@
 
 import UIKit
 
-extension UIViewController {
-    
-    static var nibName: String {
-        return String(describing: Self.self)
-    }
-    
-}
-
-
  
 extension UIViewController {
     

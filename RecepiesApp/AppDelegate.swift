@@ -17,10 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let service = RecipesService(pageSize: 30)
-        let recipesViewModel = RecipesListScreenViewModel(recipesService: service)
-        
-        let vc = RecipesListScreenViewController(recipesListScreenViewModel: recipesViewModel)
+        let vc = ControllerFabric.recipesListViewController(itemsCount: 30).instantiate()
         
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()

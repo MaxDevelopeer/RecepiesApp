@@ -29,8 +29,6 @@ extension UITableView {
 
 extension UITableViewCell: NibLoadarable {
     
-    
-    
     static var nib: UINib {
         return UINib(nibName: stringIdentifier, bundle: nil)
     }

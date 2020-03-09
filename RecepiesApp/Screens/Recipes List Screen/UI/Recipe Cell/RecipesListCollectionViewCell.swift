@@ -12,6 +12,14 @@ import UIKit
 
 class RecipesListCollectionViewCell: UICollectionViewCell {
     
+    func configure(with viewModel: RecipesListViewModelBase, at indexPath: IndexPath, completion: closure?) {
+        
+        animateRecipeImageAppearanceWith(time: 0.25)
+        viewModel.loadImageForObject(at: indexPath) { self.recipeImage?.image = $0 }
+        self.titleLabel?.text = viewModel.getTitleForRecipe(at: indexPath)
+    }
+    
+    
     @IBOutlet var recipeImage: UIImageView? {
         didSet {
             recipeImage?.alpha = 0

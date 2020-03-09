@@ -24,12 +24,12 @@ class RecipeDetailsScreenViewController: UIViewController {
         }
     }
     
-    private let recipeViewModel: RecipeViewModel
+    private let recipeViewModel: RecipeViewModelBase
     
     
-    init(recipeViewModel: RecipeViewModel) {
+    init(recipeViewModel: RecipeViewModelBase) {
         self.recipeViewModel = recipeViewModel
-        super.init(nibName: RecipeDetailsScreenViewController.nibName, bundle: nil)
+        super.init(nibName: RecipeDetailsScreenViewController.stringIdentifier, bundle: nil)
     }
     
     
@@ -41,8 +41,8 @@ class RecipeDetailsScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        SectionsSetuperDetail.collectionView = recipeDetailCollectionView ?? UICollectionView()
-        SectionsSetuperDetail.recipesListViewModel = recipeViewModel
+       // SectionsSetuperDetail.collectionView = recipeDetailCollectionView ?? UICollectionView()
+       // SectionsSetuperDetail.recipesListViewModel = recipeViewModel
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.title = recipeViewModel.getRecipeTitle
     }

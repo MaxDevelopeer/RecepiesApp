@@ -49,7 +49,7 @@ enum APIRouter {
 
 
 
-extension APIRouter: NetworkRequestConstructor {
+extension APIRouter: NetworkRequestConstructorBase {
     
     public func asUrlRequest() -> Result <URLRequest, Error> {
         

@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol NetworkRequestConstructor {
+protocol NetworkRequestConstructorBase {
     
     func asUrlRequest() -> Result <URLRequest, Error>
     

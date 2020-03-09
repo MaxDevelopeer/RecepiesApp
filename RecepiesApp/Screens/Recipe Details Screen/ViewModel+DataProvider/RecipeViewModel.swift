@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 
-class RecipeViewModel {
+class RecipeViewModel: RecipeViewModelBase {
     
-    private let recipe: Recipe
+    internal let recipe: Recipe
     
     var getRecipeImage: UIImage? {
         return recipe.image ?? nil
@@ -38,12 +38,12 @@ class RecipeViewModel {
         return "• " + (recipe.ingredients?[indexPath.row].text ?? "")
     }
     
-    init(recipe: Recipe) {
+    required init(recipe: Recipe) {
         self.recipe = recipe
     }
     
-    func getHeightOfIngredientLabel(for indexPath: IndexPath, width: CGFloat) -> CGFloat? {
-        guard let text = recipe.ingredients?[indexPath.row].text else { return nil }
+    func getHeightOfIngredientLabel(for indexPath: IndexPath, width: CGFloat) -> CGFloat {
+        guard let text = recipe.ingredients?[indexPath.row].text else { return 15.0 }
         return text.heightWithConstrainedWidth(width: width - 50.0, font: UIFont(name: "HelveticaNeue", size: 17.0)!)
     }
     

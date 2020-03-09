@@ -7,12 +7,9 @@
 //
 
 import Foundation
-
-
-import Foundation
 import UIKit
 
-class RecipesListScreenViewModel {
+class RecipesListScreenViewModel: RecipesListViewModelBase {
     
     // MARK: Public Properties
     
@@ -62,7 +59,7 @@ class RecipesListScreenViewModel {
     
     // MARK: Private Properties
     
-    private var recipesLists = [RecipesList]()
+    internal var recipesLists = [RecipesList]()
 
     
     
@@ -74,7 +71,7 @@ class RecipesListScreenViewModel {
     
     // MARK: Init
     
-    init(recipesService: RecipesServiceBase) {
+    required init(recipesService: RecipesServiceBase) {
         self.recipesService = recipesService
     }
     
@@ -146,7 +143,7 @@ extension RecipesListScreenViewModel {
     func getIndexPathsForNewItems() -> [IndexPath] {
         
         let from = (recipesService.currentPage - 1) * recipesService.pageSize
-        let to = from + recipesLists[recipesService.currentPage - 1].recipesObjects.count //recipesService.pageSize
+        let to = from + recipesLists[recipesService.currentPage - 1].recipesObjects.count
         
         var indexPaths = [IndexPath]()
         
@@ -155,28 +152,6 @@ extension RecipesListScreenViewModel {
         }
         
         return indexPaths
-      
-        
-    }
-    
-    
-    enum PageLoader {
-        
-        case fromStart
-        case next
-        
-        
-        func getPageParamsFor(currentPage: Int, pageSize: Int) -> (from: Int, to: Int) {
-            switch self {
-            case .fromStart:
-                return (0, pageSize)
-            case .next:
-                let from = currentPage * pageSize
-                let to = from + pageSize
-                return(from, to)
-            }
-            
-        }
         
     }
     

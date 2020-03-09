@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum BaseNetworkRequestConstructor: NetworkRequestConstructor {
+enum BaseNetworkRequestConstructor: NetworkRequestConstructorBase {
     
     case requestUrlString (
         address: String

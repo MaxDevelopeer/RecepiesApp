@@ -1,5 +1,5 @@
 //
-//  Serializable.swift
+//  Deserializable.swift
 //  RecepiesApp
 //
 //  Created by Maxim on 09/02/2020.
@@ -9,8 +9,8 @@
 import Foundation
 
 
-protocol Serialize {
+protocol DeserializableBase where Self : Decodable {
     
-    func serialize() -> Result <Data, Error>
+    static func deserialize (with data: Data) -> Self?
     
 }

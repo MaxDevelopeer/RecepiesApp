@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum DietType: String {
+enum DietType: String, CaseIterable {
     
     case balanced
     case highFiber = "high-fiber"
@@ -18,6 +18,10 @@ enum DietType: String {
     case lowFat = "low-fat"
     case lowSodium = "low-sodium"
     
+//    static var amountOfItems: Int {
+//        return 6
+//    }
+//
     var description: String {
         switch self {
         case .balanced:

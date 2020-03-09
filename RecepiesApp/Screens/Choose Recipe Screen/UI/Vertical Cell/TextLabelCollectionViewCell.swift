@@ -8,7 +8,8 @@
 
 import UIKit
 
-class VerticalCollectionViewCell: UICollectionViewCell {
+class TextLabelCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet var verticalLabel: UILabel!
     
 }
