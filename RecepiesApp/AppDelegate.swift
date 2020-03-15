@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let vc = ControllerFabric.recipesListViewController(itemsCount: 30).instantiate()
+        let vc = ControllerFabric.chooseReipeViewController.instantiate()
+        
+       // let vc = ControllerFabric.recipesListViewController(itemsCount: 30, loadRecipesParameters: <#LoadRecipesParameters#>).instantiate()
         
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()

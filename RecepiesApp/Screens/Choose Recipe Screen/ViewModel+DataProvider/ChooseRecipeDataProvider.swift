@@ -5,74 +5,74 @@
 //  Created by Maxim on 09/03/2020.
 //  Copyright © 2020 maxim.kruchinin. All rights reserved.
 //
-
-import Foundation
-import UIKit
-
-protocol ChooseRecipeDataProviderBase: DataProviderBase {
-    init(with viewModel: ChooseRecipeViewModelBase)
-}
-
-
-class ChooseRecipeDataProvider: ChooseRecipeDataProviderBase {
-    
-    private let chooseRecipeViewModel: ChooseRecipeViewModelBase
-    
-    required init(with viewModel: ChooseRecipeViewModelBase) {
-        self.chooseRecipeViewModel = viewModel
-    }
-    
-    var getAmountOfSections: Int {
-        return 1
-    }
-    
-    var selectedItemCompletion: (IndexPath) -> ()
-    
-    var willDisplayItemCompletion: (UICollectionViewCell, UICollectionView, IndexPath) -> ()
-    
-    func getAmountOfItems(in section: Int) -> Int {
-        chooseRecipeViewModel.getAmountOfItems(type: <#T##CollectionType#>)
-    }
-    
-    func getCellForItem(at indexPath: IndexPath, for collectionView: UICollectionView) -> UICollectionViewCell? {
-        <#code#>
-    }
-    
-    func getSizeOfItem(at indexPath: IndexPath, for collectionView: UICollectionView) -> CGSize {
-        <#code#>
-    }
-    
-    
-    
-    
-}
-
-
-private extension ChooseRecipeDataProvider {
-    
-    enum collectionsSetuper {
-        
-        case dietCollection
-        case healthCollection
-        case mealCollection
-        case dishCollection
-        
-        func getSizeOfItem(for viewModel: RecipeViewModelBase, in collectionView: UICollectionView) -> CGSize {
-            switch self {
-            case .dietCollection:
-                return CGSize(width: collectionView.bounds.width, height: 275)
-            case .second(let indexPath):
-                let height = viewModel.getHeightOfIngredientLabel(for: indexPath, width: collectionView.bounds.width)
-                return CGSize(width: collectionView.bounds.width, height: height + 25.0)
-            }
-        }
-        
-        
-        
-    }
-    
-    
-}
+//
+//import Foundation
+//import UIKit
+//
+//protocol ChooseRecipeDataProviderBase: DataProviderBase {
+//    init(with viewModel: ChooseRecipeViewModelBase)
+//}
+//
+//
+//class ChooseRecipeDataProvider: ChooseRecipeDataProviderBase {
+//
+//    private let chooseRecipeViewModel: ChooseRecipeViewModelBase
+//
+//    required init(with viewModel: ChooseRecipeViewModelBase) {
+//        self.chooseRecipeViewModel = viewModel
+//    }
+//
+//    var getAmountOfSections: Int {
+//        return 1
+//    }
+//
+//    var selectedItemCompletion: (IndexPath) -> ()
+//
+//    var willDisplayItemCompletion: (UICollectionViewCell, UICollectionView, IndexPath) -> ()
+//
+//    func getAmountOfItems(in section: Int) -> Int {
+//        chooseRecipeViewModel.getAmountOfItems(type: <#T##CollectionType#>)
+//    }
+//
+//    func getCellForItem(at indexPath: IndexPath, for collectionView: UICollectionView) -> UICollectionViewCell? {
+//        <#code#>
+//    }
+//
+//    func getSizeOfItem(at indexPath: IndexPath, for collectionView: UICollectionView) -> CGSize {
+//        <#code#>
+//    }
+//
+//
+//
+//
+//}
+//
+//
+//private extension ChooseRecipeDataProvider {
+//
+//    enum collectionsSetuper {
+//
+//        case dietCollection
+//        case healthCollection
+//        case mealCollection
+//        case dishCollection
+//
+//        func getSizeOfItem(for viewModel: RecipeViewModelBase, in collectionView: UICollectionView) -> CGSize {
+//            switch self {
+//            case .dietCollection:
+//                return CGSize(width: collectionView.bounds.width, height: 275)
+//            case .second(let indexPath):
+//                let height = viewModel.getHeightOfIngredientLabel(for: indexPath, width: collectionView.bounds.width)
+//                return CGSize(width: collectionView.bounds.width, height: height + 25.0)
+//            }
+//        }
+//
+//
+//
+//    }
+//
+//    
+//}
 //
 //
 //

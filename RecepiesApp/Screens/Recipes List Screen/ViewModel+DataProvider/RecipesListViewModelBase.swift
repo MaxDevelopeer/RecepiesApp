@@ -19,7 +19,7 @@ protocol RecipesListViewModelBase: ViewModelBase {
     
     var recipesLists: [RecipesList] { get }
     
-    init(recipesService: RecipesServiceBase)
+    init(recipesService: RecipesServiceBase, loadParameters: LoadRecipesParameters)
     
     func getTitleForRecipe(at indexPath: IndexPath) -> String?
     

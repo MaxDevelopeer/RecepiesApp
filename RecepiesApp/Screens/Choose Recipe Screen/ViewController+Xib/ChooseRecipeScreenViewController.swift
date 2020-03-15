@@ -9,19 +9,22 @@
 import UIKit
 
 class ChooseRecipeScreenViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     
-    @IBOutlet var recipeSearchInfoTableView: UITableView? {
-        didSet {
-            recipeSearchInfoTableView?.dataSource = self
-            recipeSearchInfoTableView?.delegate = self
-            recipeSearchInfoTableView?.registerCell(
-            type: TextLabelCollectionViewCell.self)
-        }
+    @IBOutlet private var ingredientTextField: UITextField? 
+    
+    
+    @IBAction func searchButtonDidTapped(_ sender: UIButton) {
+        
+        guard let mainIngredient = ingredientTextField?.text else { return }
+        
+        let loadRecipesParams = LoadRecipesParameters(mainIngredient: mainIngredient)
+        
+        let vc = ControllerFabric.recipesListViewController(itemsCount: 30, loadRecipesParameters: loadRecipesParams).instantiate()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
     }
     
     init() {
@@ -33,22 +36,4 @@ class ChooseRecipeScreenViewController: UIViewController {
     }
     
 
-}
-
-
-extension ChooseRecipeScreenViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()//tableView.getReusableCell(type: VerticalCollectionViewCell, to: indexPath)
-    }
-    
 }

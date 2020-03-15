@@ -10,8 +10,17 @@ import UIKit
 
 class RecipesListScreenViewController: UIViewController {
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
     
-    @IBOutlet private var recipesListCollectionView: UICollectionView?
+    @IBOutlet private var recipesListCollectionView: UICollectionView? {
+        didSet {
+            recipesListCollectionView?.backgroundView = activityIndicator
+        }
+    }
     
     private let recipesListScreenViewModel: RecipesListViewModelBase
     
@@ -32,7 +41,7 @@ class RecipesListScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        self.navigationItem.title = "Recipes List"
+        navigationItem.title = "Recipes List"
         
         guard let collectionView = recipesListCollectionView else {
             return
@@ -44,7 +53,12 @@ class RecipesListScreenViewController: UIViewController {
         recipesListCollectionView?.registerCell(type: RecipesListCollectionViewCell.self)
         recipesListCollectionView?.registerCell(type: RecipesListCollectionViewLoadingCell.self)
         
-        recipesListScreenViewModel.loadRecipes(page: .fromStart) { self.recipesListCollectionView?.reloadData() }
+        activityIndicator.startAnimating()
+        
+        recipesListScreenViewModel.loadRecipes(page: .fromStart) {
+            self.recipesListCollectionView?.reloadData()
+            self.activityIndicator.stopAnimating()
+        }
         
     }
     

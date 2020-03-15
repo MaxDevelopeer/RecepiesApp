@@ -13,7 +13,7 @@ enum ControllerFabric {
     
     case recipeDetailsViewController(viewModel: RecipeViewModelBase)
     case chooseReipeViewController
-    case recipesListViewController(itemsCount: Int)
+    case recipesListViewController(itemsCount: Int, loadRecipesParameters: LoadRecipesParameters)
     
     func instantiate() -> UIViewController {
         switch self {
@@ -21,9 +21,9 @@ enum ControllerFabric {
             return ChooseRecipeScreenViewController()
         case .recipeDetailsViewController(let viewModel):
             return RecipeDetailsScreenViewController(recipeViewModel: viewModel)
-        case .recipesListViewController(let itemsCount):
+        case .recipesListViewController(let itemsCount, let loadParameters):
             let service = RecipesService(pageSize: itemsCount)
-            let viewModel = RecipesListScreenViewModel(recipesService: service)
+            let viewModel = RecipesListScreenViewModel(recipesService: service, loadParameters: loadParameters)
             return RecipesListScreenViewController(recipesListScreenViewModel: viewModel)
         }
     }

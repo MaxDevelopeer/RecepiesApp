@@ -13,8 +13,9 @@ import UIKit
 class RecipesService: RecipesServiceBase {
     
     
-    private(set) var pageSize: Int
+    let pageSize: Int
     private(set) var currentPage: Int
+    
     
     init(pageSize: Int) {
         self.pageSize = pageSize

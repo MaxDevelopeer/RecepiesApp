@@ -67,12 +67,14 @@ class RecipesListScreenViewModel: RecipesListViewModelBase {
     
     private let recipesService: RecipesServiceBase
    
+    private let loadParameters: LoadRecipesParameters
     
     
     // MARK: Init
     
-    required init(recipesService: RecipesServiceBase) {
+    required init(recipesService: RecipesServiceBase, loadParameters: LoadRecipesParameters) {
         self.recipesService = recipesService
+        self.loadParameters = loadParameters
     }
     
     
@@ -116,7 +118,7 @@ extension RecipesListScreenViewModel {
         
         let pageParams = page.getPageParamsFor(currentPage: recipesService.currentPage, pageSize: recipesService.pageSize)
         
-        let requestTypeResult = APIRouter.search(mainIngredient: "chicken",
+        let requestTypeResult = APIRouter.search(mainIngredient: loadParameters.mainIngredient,
                                                  from: pageParams.from,
                                                  to: pageParams.to,
                                                  dietType: nil,
